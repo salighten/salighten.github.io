@@ -1,0 +1,50 @@
+[
+  {
+    "id": "agent",
+    "name": "AI Agent",
+    "description": "AI Agent / Agentic workflow, 자율 에이전트 프레임워크·프로토콜(MCP 등)·오케스트레이션",
+    "query_hint": "AI agent framework, agentic workflow, multi-agent system, tool use, autonomous agent news"
+  },
+  {
+    "id": "llm-foundation-model",
+    "name": "LLM / Foundation Model",
+    "description": "대규모 언어모델, 파운데이션 모델 출시·연구·벤치마크",
+    "query_hint": "new LLM release, foundation model research, model benchmark, frontier model news"
+  },
+  {
+    "id": "deep-learning",
+    "name": "Deep Learning",
+    "description": "딥러닝 아키텍처·학습 기법·연구 성과",
+    "query_hint": "deep learning architecture research, neural network training technique, deep learning breakthrough"
+  },
+  {
+    "id": "predictive-modeling",
+    "name": "예측 모델링",
+    "description": "시계열 예측, forecasting, 예측 AI 응용 기술",
+    "query_hint": "time series forecasting AI, predictive modeling machine learning, demand forecasting model"
+  },
+  {
+    "id": "causal-inference",
+    "name": "인과추론",
+    "description": "인과추론 기법, causal ML, 인과관계 기반 의사결정 기술",
+    "query_hint": "causal inference machine learning, causal AI research, causal discovery model"
+  },
+  {
+    "id": "mlops-ml-engineering",
+    "name": "MLOps / ML Engineering",
+    "description": "ML 파이프라인, MLOps 플랫폼, 모델 서빙·배포 엔지니어링",
+    "query_hint": "MLOps platform news, ML engineering pipeline, model deployment serving infrastructure"
+  },
+  {
+    "id": "fde-case-study",
+    "name": "FDE 실무사례",
+    "description": "Forward Deployed Engineer 역할·실무 적용 사례, 고객 맞춤 AI 구축 사례",
+    "query_hint": "forward deployed engineer, FDE AI implementation case study, applied AI engineering team"
+  },
+  {
+    "id": "industry-application",
+    "name": "산업 적용 사례",
+    "description": "AI/ML의 산업별 실제 적용 사례, 기업 도입 사례",
+    "query_hint": "enterprise AI adoption case study, industry machine learning application, AI deployment business impact"
+  }
+]
