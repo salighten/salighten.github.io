@@ -96,6 +96,9 @@ body {
   border-radius: 4px;
   padding: 22px 26px;
   margin-bottom: 44px;
+  position: sticky;
+  top: 12px;
+  z-index: 10;
 }
 
 .toc-title {
@@ -112,7 +115,13 @@ body {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px 24px;
+  gap: 4px 24px;
+}
+
+.toc-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
 }
 
 .toc-list a {
@@ -122,8 +131,9 @@ body {
   text-decoration: none;
   color: var(--ink);
   font-size: 14px;
-  padding: 6px 0;
+  padding: 5px 0;
   border-bottom: 1px dotted var(--rule);
+  flex: 1;
 }
 
 .toc-list a:hover .toc-name { color: var(--accent); }
@@ -135,6 +145,32 @@ body {
   color: var(--ink-muted);
   font-variant-numeric: tabular-nums;
 }
+
+.toc-topic-link {
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding: 0 2px;
+  flex-shrink: 0;
+}
+
+.toc-topic-link:hover { color: var(--accent); }
+
+.toc-actions {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  text-align: right;
+}
+
+.toc-action-link {
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.toc-action-link:hover { text-decoration: underline; }
 
 /* ---------- Topic sections ---------- */
 
@@ -154,7 +190,22 @@ body {
   font-family: var(--serif);
   font-size: 24px;
   margin: 0 0 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
 }
+
+.topic-heading-link {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.topic-heading-link:hover { text-decoration: underline; }
 
 .topic-desc {
   font-size: 13px;
@@ -197,6 +248,14 @@ body {
 
 .article-title a:hover { color: var(--accent); }
 
+.article-pubdate {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
 .article-source {
   font-size: 11px;
   text-transform: uppercase;
@@ -208,7 +267,50 @@ body {
 .article-summary {
   font-size: 14.5px;
   color: #2c2c2c;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
+}
+
+/* ---------- WHY IT MATTERS — collapsible ---------- */
+
+.insight-details {
+  margin-bottom: 10px;
+}
+
+.insight-toggle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #8a6d2f;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  user-select: none;
+}
+
+.insight-toggle::-webkit-details-marker { display: none; }
+
+.insight-toggle::before {
+  content: "▶";
+  font-size: 8px;
+  transition: transform 0.15s;
+}
+
+.insight-details[open] .insight-toggle::before { transform: rotate(90deg); }
+
+.insight-details[open] {
+  background: var(--insight-bg);
+  border-left: 3px solid var(--insight-border);
+  padding: 0 12px 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+.insight-text {
+  font-size: 13.5px;
+  color: #3a3020;
+  margin: 0;
 }
 
 .insight-box {
@@ -225,12 +327,6 @@ body {
   letter-spacing: 0.12em;
   color: #8a6d2f;
   margin-bottom: 5px;
-}
-
-.insight-text {
-  font-size: 13.5px;
-  color: #3a3020;
-  margin: 0;
 }
 
 .related-link {
@@ -298,9 +394,7 @@ body {
 
 .landing-cta-secondary:hover { background: var(--accent-soft); }
 
-.landing-topics {
-  margin-bottom: 16px;
-}
+.landing-topics { margin-bottom: 16px; }
 
 .landing-topic-list {
   list-style: none;
@@ -324,12 +418,200 @@ body {
   font-size: 15px;
   min-width: 160px;
   flex-shrink: 0;
+  color: var(--ink);
+  text-decoration: none;
 }
+
+.landing-topic-name:hover { color: var(--accent); text-decoration: underline; }
 
 .landing-topic-desc {
   font-size: 13px;
   color: var(--ink-muted);
 }
+
+/* ---------- Topic nav (shared: topic page, headlines page) ---------- */
+
+.topic-nav {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-bottom: 32px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  line-height: 2;
+}
+
+.topic-nav-label {
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.topic-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0 2px;
+}
+
+.topic-nav a:hover { text-decoration: underline; }
+
+/* ---------- Date group (topic pages) ---------- */
+
+.date-group {
+  margin-bottom: 36px;
+}
+
+.date-group-header {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.date-group-count {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+/* ---------- Collapsible article (topic + headlines pages) ---------- */
+
+.ah-details {
+  border-bottom: 1px solid var(--rule);
+}
+
+.ah-details:last-child { border-bottom: none; }
+
+.ah-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 6px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.ah-summary::-webkit-details-marker { display: none; }
+
+.ah-summary::before {
+  content: "▶";
+  font-size: 9px;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform 0.15s;
+  margin-top: 2px;
+}
+
+.ah-details[open] > .ah-summary::before { transform: rotate(90deg); }
+
+.ah-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  flex: 1;
+  line-height: 1.45;
+}
+
+.ah-details[open] > .ah-summary .ah-title { color: var(--accent); }
+
+.ah-source {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ah-date {
+  font-size: 11px;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ah-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.ah-pubdate {
+  font-size: 10px;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ah-no-summary {
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.ah-body {
+  padding: 4px 16px 16px 24px;
+}
+
+.ah-body .article-summary { font-size: 14px; }
+
+.ah-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.ah-link:hover { text-decoration: underline; }
+
+/* ---------- Headlines page ---------- */
+
+.hl-date-section {
+  margin-bottom: 40px;
+}
+
+.hl-date-header {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.hl-topic-group {
+  margin-bottom: 20px;
+}
+
+.hl-topic-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 4px;
+  padding: 6px 6px 4px;
+  border-bottom: 1px solid var(--accent-soft);
+}
+
+.hl-topic-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hl-topic-name a:hover { text-decoration: underline; }
 
 /* ---------- Archive tree (root index) ---------- */
 
@@ -354,9 +636,7 @@ body {
   padding-left: 0;
 }
 
-.tree-days {
-  margin-left: 20px;
-}
+.tree-days { margin-left: 20px; }
 
 .tree-list li { margin-bottom: 4px; }
 
@@ -407,9 +687,14 @@ body {
 @media (max-width: 640px) {
   .page { padding: 32px 22px; }
   .masthead-title { font-size: 30px; }
+  .toc { position: static; }
   .toc-list { grid-template-columns: 1fr; }
   .article { gap: 12px; }
   .article-index { font-size: 20px; min-width: 28px; }
   .landing-topic-list li { flex-direction: column; gap: 4px; }
   .landing-topic-name { min-width: 0; }
+  .topic-title { flex-direction: column; gap: 4px; }
+  .ah-source { display: none; }
+  .date-group-header { flex-direction: column; gap: 2px; }
+  .hl-date-header { flex-direction: column; gap: 2px; }
 }
