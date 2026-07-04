@@ -96,9 +96,6 @@ body {
   border-radius: 4px;
   padding: 22px 26px;
   margin-bottom: 44px;
-  position: sticky;
-  top: 12px;
-  z-index: 10;
 }
 
 .toc-title {
