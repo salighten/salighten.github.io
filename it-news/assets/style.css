@@ -215,14 +215,25 @@ body {
 
 /* ---------- Article cards ---------- */
 
-.article {
+.article-wrap {
   display: flex;
   gap: 18px;
-  padding: 24px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--rule);
+  align-items: flex-start;
 }
 
-.article:last-of-type { border-bottom: none; }
+.article-wrap:last-of-type { border-bottom: none; }
+
+.article-wrap > .article-index {
+  padding-top: 10px;
+}
+
+.article-wrap > .ah-details {
+  flex: 1;
+  min-width: 0;
+  border-bottom: none;
+}
 
 .article-index {
   font-family: var(--serif);
@@ -231,37 +242,7 @@ body {
   color: var(--rule);
   min-width: 40px;
   line-height: 1;
-}
-
-.article-body { flex: 1; min-width: 0; }
-
-.article-title {
-  font-size: 18px;
-  margin: 0 0 6px;
-  line-height: 1.4;
-}
-
-.article-title a {
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.article-title a:hover { color: var(--accent); }
-
-.article-pubdate {
-  font-size: 11px;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-bottom: 4px;
-}
-
-.article-source {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ink-muted);
-  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 .article-summary {
